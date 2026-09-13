@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎂 ¡Feliz Cumpleaños Mi Niña! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe0ec 50%, #ffd1dc 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Confeti y globos flotando */
+  .float-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .float-item {
+    position: absolute;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% { opacity: 0.9; }
+    90% { opacity: 0.9; }
+    100% {
+      transform: translateY(-120px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding: 50px 20px 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .birthday-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff4d6d, #ffb3c6);
+    color: white;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    color: #d6336c;
+    text-shadow: 3px 3px 15px rgba(255, 182, 193, 0.8);
+    line-height: 1.1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #a4133c;
+    margin-top: 15px;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  /* Escenario: parejita + pastel */
+  .stage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    height: 300px;
+    margin: 20px auto;
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+  }
+
+  .person {
+    width: 120px;
+    height: 200px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .person svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .boy {
+    animation: bounceBoy 2s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+
+  @keyframes bounceBoy {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  .girl {
+    animation: bounceGirl 2s ease-in-out infinite;
+    animation-delay: 0.3s;
+    transform-origin: bottom center;
+  }
+
+  @keyframes bounceGirl {
+    0%, 100% { transform: translateY(0) rotate(2deg); }
+    50% { transform: translateY(-15px) rotate(-2deg); }
+  }
+
+  /* Pastel animado */
+  .cake {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    flex-shrink: 0;
+    animation: cakeFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes cakeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Sección mensajes */
+  .messages {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .message-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(214, 51, 108, 0.2);
+    border-left: 5px solid #ff4d6d;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .message-card:nth-child(1) { animation-delay: 0.3s; }
+  .message-card:nth-child(2) { animation-delay: 0.6s; }
+  .message-card:nth-child(3) { animation-delay: 0.9s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .message-card p {
+    color: #590d22;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .message-card .emoji {
+    font-size: 1.5rem;
+    margin-right: 8px;
+  }
+
+  /* Álbum de fotos */
+  .album-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .album-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #d6336c;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .album-subtitle {
+    text-align: center;
+    color: #a4133c;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .album {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+
+  .polaroid {
+    background: white;
+    padding: 15px 15px 60px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: rotate(-3deg);
+    transition: all 0.4s ease;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .polaroid:nth-child(even) { transform: rotate(3deg); }
+  .polaroid:nth-child(3n) { transform: rotate(-5deg); }
+  .polaroid:nth-child(5n) { transform: rotate(4deg); }
+  .polaroid:nth-child(7n) { transform: rotate(-4deg); }
+
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.08) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(214, 51, 108, 0.4);
+    z-index: 10;
+  }
+
+  .polaroid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #ffc2d1, #ffb3c6);
+  }
+
+  .polaroid .caption {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: #d6336c;
+    padding: 0 10px;
+  }
+
+  /* Sección regalos */
+  .gifts {
+    text-align: center;
+    margin: 60px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gifts h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d6336c;
+    margin-bottom: 30px;
+  }
+
+  .gift-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .gift {
+    font-size: 4rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  .gift:nth-child(1) { animation-delay: 0s; }
+  .gift:nth-child(2) { animation-delay: 0.3s; }
+  .gift:nth-child(3) { animation-delay: 0.6s; }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .gift:hover {
+    transform: scale(1.3) rotate(0deg);
+  }
+
+  /* Botón final */
+  .final-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 18px 50px;
+    background: linear-gradient(135deg, #ff4d6d, #d6336c);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(214, 51, 108, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .final-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(214, 51, 108, 0.6);
+  }
+
+  /* Modal sorpresa */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(89, 13, 34, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal.active {
+    display: flex;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .modal-content {
+    background: linear-gradient(135deg, #fff0f3, #ffe0ec);
+    border-radius: 25px;
+    padding: 50px 40px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-content .cake-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: pulse 1.5s infinite;
+    display: inline-block;
+  }
+
+  .modal-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d6336c;
+    margin-bottom: 20px;
+  }
+
+  .modal-content p {
+    color: #590d22;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+
+  .modal-close {
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .modal-close:hover {
+    background: #d6336c;
+    transform: scale(1.05);
+  }
+
+  /* Lightbox para fotos */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  .lightbox.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 77, 109, 0.5);
+    animation: popIn 0.4s ease;
+  }
+
+  .lightbox .close-hint {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .stage {
+      flex-direction: column;
+      height: auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .person { width: 100px; height: 170px; }
+    .cake { width: 120px; height: 120px; }
+    .album-title { font-size: 2.2rem; }
+    h1 { font-size: 2.5rem; }
+    .gift { font-size: 3rem; }
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #a4133c;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer .heart {
+    color: #ff4d6d;
+    animation: pulse 1.2s infinite;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<!-- Globos y confeti flotando -->
+<div class="float-bg" id="floatBg"></div>
+
+<!-- Header -->
+<header>
+  <div class="birthday-tag">🎉 FELIZ CUMPLEAÑOS 🎉</div>
+  <h1>¡Feliz Cumpleaños<br>Mi AMOOR! 🎂</h1>
+  <p class="subtitle">— Hoy celebramos el día más bonito del año —</p>
+</header>
+
+<!-- Escenario: parejita + pastel -->
+<div class="stage">
+  <div class="person boy">
+    <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 5 L30 30 L70 30 Z" fill="#ff4d6d"/>
+      <circle cx="50" cy="5" r="4" fill="#ffd700"/>
+      <rect x="35" y="115" width="10" height="35" rx="4" fill="#2b2d42"/>
+      <rect x="55" y="115" width="10" height="35" rx="4" fill="#2b2d42"/>
+      <ellipse cx="40" cy="152" rx="10" ry="6" fill="#1a1a2e"/>
+      <ellipse cx="60" cy="152" rx="10" ry="6" fill="#1a1a2e"/>
+      <rect x="30" y="70" width="40" height="50" rx="15" fill="#4a90e2"/>
+      <rect x="18" y="75" width="14" height="35" rx="7" fill="#ffd6ba"/>
+      <rect x="68" y="75" width="14" height="35" rx="7" fill="#ffd6ba"/>
+      <circle cx="50" cy="48" r="22" fill="#ffd6ba"/>
+      <path d="M28 48 Q28 20 50 20 Q72 20 72 48 Q68 34 50 32 Q32 34 28 48 Z" fill="#3a2e2a"/>
+      <circle cx="43" cy="48" r="3" fill="#2b2d42"/>
+      <circle cx="57" cy="48" r="3" fill="#2b2d42"/>
+      <path d="M43 57 Q50 64 57 57" stroke="#2b2d42" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="55" r="4" fill="#ffb3c6" opacity="0.7"/>
+      <circle cx="63" cy="55" r="4" fill="#ffb3c6" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <div class="cake">
+    <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+      <rect x="66" y="30" width="8" height="25" rx="2" fill="#ffd700"/>
+      <ellipse cx="70" cy="24" rx="6" ry="10" fill="#ff9500">
+        <animate attributeName="ry" values="10;12;10" dur="0.5s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="70" cy="26" rx="3" ry="6" fill="#ffdd00">
+        <animate attributeName="ry" values="6;7;6" dur="0.4s" repeatCount="indefinite"/>
+      </ellipse>
+      <rect x="20" y="90" width="100" height="35" rx="8" fill="#ffb3c6"/>
+      <rect x="30" y="65" width="80" height="30" rx="8" fill="#ff4d6d"/>
+      <rect x="40" y="45" width="60" height="25" rx="8" fill="#d6336c"/>
+      <circle cx="35" cy="105" r="3" fill="#ffd700"/>
+      <circle cx="70" cy="105" r="3" fill="#ffd700"/>
+      <circle cx="105" cy="105" r="3" fill="#ffd700"/>
+      <circle cx="45" cy="80" r="3" fill="#fff"/>
+      <circle cx="70" cy="80" r="3" fill="#fff"/>
+      <circle cx="95" cy="80" r="3" fill="#fff"/>
+      <circle cx="55" cy="58" r="2.5" fill="#ffd700"/>
+      <circle cx="70" cy="58" r="2.5" fill="#ffd700"/>
+      <circle cx="85" cy="58" r="2.5" fill="#ffd700"/>
+      <ellipse cx="70" cy="128" rx="60" ry="6" fill="#e0e0e0"/>
+    </svg>
+  </div>
+
+  <div class="person girl">
+    <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 5 L30 30 L70 30 Z" fill="#ffd700"/>
+      <circle cx="50" cy="5" r="4" fill="#ff4d6d"/>
+      <rect x="35" y="115" width="10" height="35" rx="4" fill="#ffd6ba"/>
+      <rect x="55" y="115" width="10" height="35" rx="4" fill="#ffd6ba"/>
+      <ellipse cx="40" cy="152" rx="10" ry="6" fill="#ff4d6d"/>
+      <ellipse cx="60" cy="152" rx="10" ry="6" fill="#ff4d6d"/>
+      <path d="M30 70 L25 120 L75 120 L70 70 Z" fill="#d6336c"/>
+      <rect x="32" y="65" width="36" height="20" rx="10" fill="#d6336c"/>
+      <rect x="18" y="72" width="14" height="35" rx="7" fill="#ffd6ba"/>
+      <rect x="68" y="72" width="14" height="35" rx="7" fill="#ffd6ba"/>
+      <circle cx="50" cy="48" r="22" fill="#ffd6ba"/>
+      <path d="M28 48 Q28 18 50 18 Q72 18 72 48 L72 68 Q68 63 66 53 Q66 32 50 30 Q34 32 34 53 Q32 63 28 68 Z" fill="#6b4423"/>
+      <circle cx="43" cy="48" r="3" fill="#2b2d42"/>
+      <circle cx="57" cy="48" r="3" fill="#2b2d42"/>
+      <path d="M40 45 L38 42 M60 45 L62 42" stroke="#2b2d42" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M43 57 Q50 64 57 57" stroke="#2b2d42" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="55" r="4" fill="#ffb3c6" opacity="0.9"/>
+      <circle cx="63" cy="55" r="4" fill="#ffb3c6" opacity="0.9"/>
+    </svg>
+  </div>
+</div>
+
+<!-- Mensajes -->
+<section class="messages">
+  <div class="message-card">
+    <p><span class="emoji">🎂</span>Hoy es un día especial porque naciste tú, la persona que llena mis días de alegría. ¡Feliz cumpleaños, mi amor!</p>
+  </div>
+  <div class="message-card">
+    <p><span class="emoji">🎈</span>Espero verte y darte mucho amor, se que lo necesitas, te mando muchos besos y abrazos. Te mereces todo lo bonito del mundo.</p>
+  </div>
+  <div class="message-card">
+    <p><span class="emoji">💕</span>Gracias por existir, por ser tú, por dejarme compartir tu vida. Este día es tuyo, y yo solo quiero verte feliz. Te amo. 🎁</p>
+  </div>
+</section>
+
+<!-- Álbum de fotos -->
+<section class="album-section">
+  <h2 class="album-title">Nuestros Recuerdos 📸</h2>
+  <p class="album-subtitle">— 8 momentos que guardo en el corazón —</p>
+  <div class="album">
+    <div class="polaroid">
+      <img src="foto1.jpg" alt="Foto 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Nuestro primer día</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto2.jpg" alt="Foto 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Ese paseo juntos</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto3.jpg" alt="Foto 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Atardecer contigo</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto4.jpg" alt="Foto 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Tu cumpleaños</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto5.jpg" alt="Foto 5" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Momentos felices</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto6.jpg" alt="Foto 6" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Risas contigo</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto7.jpg" alt="Foto 7" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Aventuras juntos</div>
+    </div>
+    <div class="polaroid">
+      <img src="foto8.jpg" alt="Foto 8" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="caption">Siempre tú y yo</div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección regalos -->
+<section class="gifts">
+  <h2>Toca tus regalitos 🎁</h2>
+  <div class="gift-row">
+    <div class="gift" onclick="showGift('🎂', 'Un pastel enorme solo para ti')">🎁</div>
+    <div class="gift" onclick="showGift('💐', 'Un ramo de flores como tú')">🎁</div>
+    <div class="gift" onclick="showGift('💖', 'Mi corazón entero, siempre tuyo')">🎁</div>
+  </div>
+</section>
+
+<!-- Botón final -->
+<button class="final-btn" onclick="openModal()">💌 Ábreme 💌</button>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="cake-icon">🎂</div>
+    <h2>¡Feliz Cumpleaños!</h2>
+    <p>
+      Hoy celebramos el día en que llegaste al mundo,<br>
+      el día en que mi vida se volvió más bonita.<br><br>
+      Gracias por ser mi niña, mi amor, mi todo.<br>
+      <strong>Te amo con todo mi corazón. 💖</strong>
+    </p>
+    <button class="modal-close" onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<!-- Lightbox para ver fotos en grande -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="close-hint">✕</span>
+  <img src="" alt="Foto ampliada" id="lightboxImg">
+</div>
+
+<!-- Footer -->
+<footer>
+  Hecho con <span class="heart">❤</span> para ti, mi niña, en tu día especial 🎉
+</footer>
+
+<script>
+  // Globos, confeti y corazones flotando
+  const floatBg = document.getElementById('floatBg');
+  const floatItems = ['🎈', '🎈', '🎈', '🎉', '🎊', '💖', '💕', '🎂', '✨', '🌸', '⭐', '🎁'];
+
+  function createFloat() {
+    const item = document.createElement('div');
+    item.className = 'float-item';
+    item.textContent = floatItems[Math.floor(Math.random() * floatItems.length)];
+    item.style.left = Math.random() * 100 + '%';
+    item.style.fontSize = (Math.random() * 25 + 20) + 'px';
+    item.style.animationDuration = (Math.random() * 8 + 9) + 's';
+    item.style.animationDelay = Math.random() * 5 + 's';
+    floatBg.appendChild(item);
+
+    setTimeout(() => item.remove(), 18000);
+  }
+
+  setInterval(createFloat, 500);
+  for (let i = 0; i < 10; i++) setTimeout(createFloat, i * 250);
+
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('active');
+    for (let i = 0; i < 40; i++) {
+      setTimeout(createFloat, i * 40);
+    }
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal') closeModal();
+  });
+
+  // Lightbox para fotos
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+
+  document.querySelectorAll('.polaroid').forEach(p => {
+    p.addEventListener('click', (e) => {
+      const img = p.querySelector('img');
+      if (img && img.style.display !== 'none') {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      }
+      // Lluvia de corazones
+      for (let i = 0; i < 12; i++) setTimeout(createFloat, i * 70);
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+  }
+
+  // Mostrar mensaje de regalo
+  function showGift(emoji, mensaje) {
+    for (let i = 0; i < 15; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'float-item';
+        el.textContent = emoji;
+        el.style.left = Math.random() * 100 + '%';
+        el.style.fontSize = '40px';
+        el.style.animationDuration = '5s';
+        el.style.zIndex = '50';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 6000);
+      }, i * 60);
+    }
+    setTimeout(() => alert(mensaje), 500);
+  }
+</script>
+
+</body>
+</html>
